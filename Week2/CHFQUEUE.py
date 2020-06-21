@@ -23,8 +23,7 @@ def main():
             max_level = level
             total_fearfullness_score *= (index - chef_index)
             chef_index = index
-
-
+        print(level)
     if chef_index != (N - 1):
         total_fearfullness_score *= ((N-1) - chef_index)
     print(total_fearfullness_score)
