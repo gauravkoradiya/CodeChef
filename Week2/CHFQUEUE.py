@@ -7,25 +7,21 @@ You are required to find the Head Chef's total fearfulness given an arrangement 
 
 """
 
+# cook your dish here
 def main():
-    N, K = 5,2 # list(map(int, input().split()))
+    N, K = list(map(int, input().split()))
     total_fearfullness_score = 1
-    max_level = -1
-    chef_index = -1
-    for index, level in enumerate([1,2,1,2,1]):#enumerate(input()):
-
-        if chef_index == -1:
-            chef_index = index
-            max_level = level
-            continue
-
-        if level >= max_level:
-            max_level = level
-            total_fearfullness_score *= (index - chef_index)
-            chef_index = index
-        print(level)
-    if chef_index != (N - 1):
-        total_fearfullness_score *= ((N-1) - chef_index)
+    p = list(map(int,input().split()))
+    s = [] 
+    for index, item in enumerate(p):
+        while len(s)!=0 and item < p[s[-1]]:
+            temp = s[-1]
+            temp = index - temp + 1  
+            total_fearfullness_score = (total_fearfullness_score * temp)%1000000007 
+            s.pop()
+    
+        s.append(index)
+        
     print(total_fearfullness_score)
 
 
